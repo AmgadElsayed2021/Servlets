@@ -1,0 +1,28 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error : no test specified\"&& exit 1",
+    "dev": "nodemon src/server.mjs",
+    "start": "node src/server.mjs",
+    "install": ""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.1",
+    "express": "^4.17.2",
+    "fs": "^0.0.1-security",
+    "mongodb": "^4.3.1",
+    "nodemon": "^2.0.15",
+    "nodes": "^0.1.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.16.12",
+    "@babel/node": "^7.16.8",
+    "@babel/preset-env": "^7.16.11"
+  }
+}
