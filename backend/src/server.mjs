@@ -29,13 +29,45 @@ app.get("/api/movies", async (req, res) => {
       useNewUrlParser: true,
     });
     const db = client.db("my-movies");
-    const movieInfo = await db.collection("movies").find({}).toArray();
-    console.log(movieInfo);
-    res.status(200).json(movieInfo);
+    const movie = await db.collection("movies").find({}).toArray();
+    console.log(movie);
+    res.status(200).json(movie);
     client.close();
   } catch (error) {
     res.status(500).json({ message: "Error connecting to db", error });
   }
 });
-const Amgad = 3;
+// const Amgad = 3;
+
+app.post("/api/delete", async (req, res) => {
+  try {
+    //  start db connection
+    const client = await MongoClient.connect("mongodb://localhost:27017", {
+      useNewUrlParser: true,
+    });
+    const db = client.db("movies");
+
+    let delMovie = await db
+      .collection("movies")
+      .deleteOne({ Title: req.body.Title });
+    console.log(delMovie);
+
+    if (delMovie.deletedCount > 0) {
+      const movie = await db.collection("movies").find({}).toArray();
+      res
+        .status(200)
+        .json({
+          message: `${req.body.Title} movie has been deleted`,
+          movies: movie,
+        });
+    } else {
+      res.status(200).json({ message: "can't find the movie name" });
+    }
+
+    client.close();
+  } catch (error) {
+    res.status(500).json({ message: "Error connceting to db", error });
+  }
+});
+
 app.listen(8000, () => console.log("App is listening on port 8000"));

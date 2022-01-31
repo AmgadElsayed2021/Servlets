@@ -11,8 +11,9 @@ function App() {
     fetch("/api/movies")
       .then((response) => response.json())
       .then(setMovies);
-    console.log(movies);
   }, []);
+  console.log(movies);
+
   return (
     <div>
       <Routes>
