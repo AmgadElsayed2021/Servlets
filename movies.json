@@ -1,0 +1,87 @@
+[
+  {
+    "_id": {
+      "$oid": "61f6c3e1f896f16e3768a4b3"
+    },
+    "Title": "Avatar",
+    "Rating": "5",
+    "Released": "18 Dec 2009",
+    "Actors": [
+      "Sam Worthington",
+      "Zoe Saldana",
+      "Sigourney Weaver",
+      "Stephen Lang"
+    ],
+    "Poster": "avatar.jpg"
+  },
+  {
+    "_id": {
+      "$oid": "61f6c3e1f896f16e3768a4b4"
+    },
+    "Title": "I Am Legend",
+    "Rating": "4.5",
+    "Released": "14 Dec 2007",
+    "Actors": [
+      "Will Smith",
+      "Alice Braga",
+      "Charlie Tahan",
+      "Salli Richardson"
+    ],
+    "Poster": "legend.jpg"
+  },
+  {
+    "_id": {
+      "$oid": "61f6c3e1f896f16e3768a4b5"
+    },
+    "Title": "300",
+    "Rating": "4.6",
+    "Released": "09 Mar 2007",
+    "Actors": ["Gerard Butler", "Lena Headey", "Dominic West", "David Wenham"],
+    "Poster": "300.jpg"
+  },
+  {
+    "_id": {
+      "$oid": "61f6c3e1f896f16e3768a4b6"
+    },
+    "Title": "The Avengers",
+    "Rating": "4.8",
+    "Released": "04 May 2012",
+    "Actors": [
+      "Robert Downey Jr.",
+      "Chris Evans",
+      "Mark Ruffalo",
+      "Chris Hemsworth"
+    ],
+    "Poster": "avengers.jpg"
+  },
+  {
+    "_id": {
+      "$oid": "61f6c3e1f896f16e3768a4b7"
+    },
+    "Title": "Interstellar",
+    "Rating": "4.8",
+    "Released": "07 Nov 2014",
+    "Actors": [
+      "Ellen Burstyn",
+      "Matthew McConaughey",
+      "Mackenzie Foy",
+      "John Lithgow"
+    ],
+    "Poster": "interstellar.jpg"
+  },
+  {
+    "_id": {
+      "$oid": "61f6c3e1f896f16e3768a4b8"
+    },
+    "Title": "Gotham",
+    "Rating": "3.6",
+    "Released": "01 Aug 2014",
+    "Actors": [
+      "Ben McKenzie",
+      " Donal Logue",
+      " David Mazouz",
+      " Sean Pertwee"
+    ],
+    "Poster": "gotham.jpg"
+  }
+]
