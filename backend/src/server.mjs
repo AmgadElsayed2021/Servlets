@@ -8,20 +8,10 @@ import { dirname } from "path";
 
 const __fileName = fileURLToPath(import.meta.url);
 const __dirName = dirname(__fileName);
-// let movieData = undefined;
-// fs.readFile("./data/movies.json", "utf8", (err, data) => {
-//   console.log(err);
-//   console.log(data);
-//   movieData = data;
-// });
-// const amgad = 5;
 const app = express();
 app.use(express.static(path.join(__dirName, "build")));
 
 app.use(bodyParser.json());
-// app.get("/hello", (req, res) => res.send("Hello Amgad!"));
-// app.post("/hello", (req, res) => res.send(`hello ${req.body.name}`));
-// app.get("/hello/:name", (req, res) => res.send(`hello ${req.params.name}`));
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // creat a data base connection function to save the code writing
@@ -45,7 +35,6 @@ app.get("/api/movies", async (req, res) => {
     res.status(500).json({ message: "Error connecting to db", error });
   }
 });
-// const Amgad = 3;
 
 app.post("/api/addMovie", async (req, res) => {
   try {
@@ -109,15 +98,15 @@ app.get("/api/Movie/:Title", async (req, res) => {
     res.status(500).json({ message: "Error connecting to db", error });
   }
 });
-// lets try this and hopefully it will work
-const storage = multer.diskStorage({
-  destination: "./src/build/images/",
-  filename: (req, file, cb) => {
-    const fileName = file.originalname.toLowerCase().split(" ").join("-");
-    cb(null, fileName);
-  },
-});
+// // lets try this and hopefully it will work
+// const storage = multer.diskStorage({
+//   destination: "./src/build/images/",
+//   filename: (req, file, cb) => {
+//     const fileName = file.originalname.toLowerCase().split(" ").join("-");
+//     cb(null, fileName);
+//   },
+// });
 
-const upload = multer({ storage: storage });
+// const upload = multer({ storage: storage });
 
 app.listen(8000, () => console.log("App is listening on port 8000"));

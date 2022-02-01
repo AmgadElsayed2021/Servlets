@@ -60,7 +60,7 @@ function addMovieFunction(formData, updateTheMovies) {
     });
     const body = await result.json();
     console.log(body);
-    updateTheMovies();
+    updateTheMovies(body);
   };
   addMovie();
 }

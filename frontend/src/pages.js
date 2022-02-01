@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 // import { Form, Button } from "semantic-ui-react";
 // import jsonfile from "jsonfile";
 // import "./index.css";
+// import { addMovieFunction, updateTheMovies } from "./App";
 
 export function Ratings() {
   return (
@@ -131,7 +132,8 @@ function MovieForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
     JSON.stringify(formData);
-    console.log(formData);
+    // console.log(formData);
+    // addMovieFunction(formData, updateTheMovies);
   };
   return (
     <form action="">
