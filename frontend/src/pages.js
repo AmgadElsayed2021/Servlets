@@ -5,6 +5,9 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Image from "react-bootstrap/Image";
+import Form from "react-bootstrap/Form";
+import Navbar from "react-bootstrap/Navbar";
+
 // import { Form, Button } from "semantic-ui-react";
 // import jsonfile from "jsonfile";
 // import "./index.css";
@@ -49,16 +52,15 @@ export function Home({ movies = [], onRemoveMovie = (f) => f }) {
 function Header() {
   return (
     <header>
-      <nav>
-        <div className="nav-main">
-          <div className="nav-div">
-            <Link to="/">Movie Review</Link>
-          </div>
-          <div className="nav-div">
-            <Link to="ratings">Ratings</Link>
-          </div>
-        </div>
-      </nav>
+      <Navbar bg="dark" variant="dark">
+        <Container>
+          <Navbar.Brand href="/">Moviflex</Navbar.Brand>
+          {/* <Navbar.Toggle aria-controls="basic-navbar-nav" /> */}
+
+          <Navbar.Brand href="/">Reviews</Navbar.Brand>
+          <Navbar.Brand href="/ratings">Ratings</Navbar.Brand>
+        </Container>
+      </Navbar>
     </header>
   );
 }
@@ -72,7 +74,17 @@ export default function Movie({
 }) {
   // console.log(props);
   return (
-    <Container>
+    <Container
+      style={{
+        backgroundColor: "#def1d5ad",
+        border: "16px solid #6a5e39",
+        padding: "5px",
+        height: "fit-content",
+        width: "fit-content",
+        margin: "5px",
+        boxShadow: "0,0,10,0 green",
+      }}
+    >
       <Row className=".text-center">
         <h2> {Title}</h2>
       </Row>
@@ -118,6 +130,7 @@ export default function Movie({
         </Col>
       </Row>
       <Button
+        variant="danger"
         className=".text-center"
         onClick={() => {
           onRemove(Title);
@@ -191,86 +204,72 @@ function MovieForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
     JSON.stringify(formData);
-    // console.log(formData);
+    console.log(formData);
     // addMovieFunction(formData, updateTheMovies);
   };
   return (
-    <form action="">
-      <div className="review-form">
-        <div className="input-outer-container">
-          <div className="input-inner">
-            <label>Movie Title:</label>
-          </div>
-          <div className="input-inner">
-            <input
-              type="text"
-              id="title"
-              name="Title"
-              onChange={handleChange}
-            />
-          </div>
-        </div>
+    <Form>
+      <Form.Group className="mb-3">
+        <Form.Label>Movie Title</Form.Label>
+        <Form.Control
+          type="text"
+          id="title"
+          name="Title"
+          onChange={handleChange}
+          placeholder="Enter movie Title"
+        />
+      </Form.Group>
 
-        <div className="input-outer-container">
-          <div className="input-inner">
-            <label>Actors:</label>
-          </div>
-          <div className="input-inner">
-            <input
-              type="text"
-              id="movie-actors"
-              name="Actors"
-              onChange={handleChange}
-            />
-          </div>
-        </div>
-
-        <div className="input-outer-container">
-          <div className="input-inner">
-            <label>Release Date:</label>
-          </div>
-          <div className="input-inner">
-            <input
-              type="date"
-              id="releaseDate"
-              name="Released"
-              onChange={handleChange}
-            />
-          </div>
-        </div>
-        <div className="input-outer-container">
-          <div className="input-inner">
-            <label>Rating:</label>
-          </div>
-          <div className="input-inner">
-            <input
-              type="number"
-              id="movie-rating"
-              name="Rating"
-              min={1}
-              max={5}
-              onChange={handleChange}
-            />
-          </div>
-        </div>
-        <div className="input-outer-container">
-          <div className="input-inner">
-            <label>Movie Poster:</label>
-          </div>
-          <div className="input-inner">
-            <input
-              type="file"
-              multiple
-              accept=" image/*"
-              id="movie-poster"
-              name="Poster"
-              onChange={handleChange}
-            />
-          </div>
-        </div>
-        <button onClick={handleSubmit}>Submit</button>
-        {/* <input type="submit" value="Submit" /> */}
-      </div>
-    </form>
+      <Form.Group className="mb-3">
+        <Form.Label>Actors</Form.Label>
+        <Form.Control
+          type="text"
+          id="movie-actors"
+          name="Actors"
+          onChange={handleChange}
+          placeholder="Enter Movie Actors seperated by comma"
+        />
+      </Form.Group>
+      <Form.Group className="mb-3">
+        <Form.Label>Releasing Date</Form.Label>
+        <Form.Control
+          type="date"
+          id="releaseDate"
+          name="Released"
+          onChange={handleChange}
+          placeholder="Enter Movie Actors seperated by comma"
+        />
+      </Form.Group>
+      <Form.Group className="mb-3">
+        <Form.Label>Rating</Form.Label>
+        <Form.Control
+          type="number"
+          id="movie-rating"
+          name="Rating"
+          min={1}
+          max={5}
+          onChange={handleChange}
+          placeholder="Enter movie Rating out of 5"
+        />
+      </Form.Group>
+      <Form.Group className="mb-3">
+        <Form.Label>Movie Poster</Form.Label>
+        <Form.Control
+          type="file"
+          multiple
+          accept=" image/*"
+          id="movie-poster"
+          name="Poster"
+          onChange={handleChange}
+          placeholder="Enter movie Rating out of 5"
+        />
+      </Form.Group>
+      <Form.Group className="mb-3">
+        <Form.Check type="checkbox" label="Check me out" />
+      </Form.Group>
+      <Button variant="primary" type="submit" onClick={handleSubmit}>
+        Submit
+      </Button>
+    </Form>
   );
 }
