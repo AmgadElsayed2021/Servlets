@@ -17,7 +17,9 @@ export function Ratings() {
   return (
     <>
       <Header />
-      <section>
+      <section
+        style={{ position: "flex", flexDirection: "row", flexWrap: "wrap" }}
+      >
         <MovieForm />
       </section>
     </>
@@ -53,7 +55,11 @@ function Header() {
   return (
     <header>
       <Navbar bg="dark" variant="dark">
-        <Container>
+        <Container
+          style={{
+            position: "static",
+          }}
+        >
           <Navbar.Brand href="/">Moviflex</Navbar.Brand>
           {/* <Navbar.Toggle aria-controls="basic-navbar-nav" /> */}
 
@@ -76,57 +82,116 @@ export default function Movie({
   return (
     <Container
       style={{
-        backgroundColor: "#def1d5ad",
-        border: "16px solid #6a5e39",
-        padding: "5px",
+        backgroundColor: "rgb(211 223 213 /  49%)",
         height: "fit-content",
         width: "fit-content",
-        margin: "5px",
-        boxShadow: "0,0,10,0 green",
+        margin: "14px",
+        padding: "6px",
+        border: "11px solid rgb(181 150 55)",
+        borderRadius: "68px",
+        boxShadow: "2px 2px 13px 3px #8b586b",
       }}
     >
       <Row className=".text-center">
-        <h2> {Title}</h2>
+        <h2 style={{ color: "#8d2639" }}> {Title}</h2>
       </Row>
 
-      <Row style={{ width: "20rem", height: "30rem" }}>
-        <img className="poster" src={"./images/" + Poster} alt={Title} />
+      <Row style={{ width: "19rem", height: "25.5rem" }}>
+        <img
+          className="poster"
+          src={"./images/" + Poster}
+          alt={Title}
+          height="400px"
+        />
       </Row>
-      <Row xl={"auto"} style={{ textAlign: "left" }}>
-        <Col>
+      <Row xs={"auto"} style={{ textAlign: "left" }}>
+        <Col
+          style={{
+            color: "blue",
+          }}
+        >
           <p>
-            <b>Released</b>:
+            <b>Released &nbsp; &nbsp; &nbsp; :</b>
           </p>
         </Col>
-        <Col>
-          <p>{Released}</p>
+        <Col className=".align-items-stretch">
+          <p
+            style={{
+              color: "#6a0000",
+            }}
+          >
+            {Released}
+          </p>
         </Col>
       </Row>
       <Row xl={"auto"} style={{ textAlign: "left", height: "10rem" }}>
-        <Col xs="auto">
-          <p>Main Actors :</p>
+        <Col
+          xs="auto"
+          style={{
+            color: "blue",
+          }}
+        >
+          <p>
+            <b>Main Actors :</b>
+          </p>
         </Col>
         <Col className=".align-items-stretch">
           <Row>
-            <p>{Actors[0]}</p>
+            <p
+              style={{
+                color: "#6a0000",
+              }}
+            >
+              {Actors[0]}
+            </p>
           </Row>
           <Row>
-            <p>{Actors[1]}</p>
+            <p
+              style={{
+                color: "#6a0000",
+              }}
+            >
+              {Actors[1]}
+            </p>
           </Row>
           <Row>
-            <p>{Actors[2]}</p>
+            <p
+              style={{
+                color: "#6a0000",
+              }}
+            >
+              {Actors[2]}
+            </p>
           </Row>
           <Row>
-            <p>{Actors[3]}</p>
+            <p
+              style={{
+                color: "#6a0000",
+              }}
+            >
+              {Actors[3]}
+            </p>
           </Row>
         </Col>
       </Row>
       <Row xl={"auto"} style={{ textAlign: "left" }}>
-        <Col>
-          <p>Movie Rating :</p>
+        <Col
+          style={{
+            color: "blue",
+          }}
+        >
+          <p>
+            <b>Movie Rating :</b>
+          </p>
         </Col>
         <Col>
-          <p>{Rating}</p>
+          <p
+            style={{
+              color: "#6a0000",
+            }}
+          >
+            {Rating}
+          </p>
         </Col>
       </Row>
       <Button
@@ -139,44 +204,6 @@ export default function Movie({
         Remove
       </Button>
     </Container>
-    // <div className="movie-frame">
-    //   <div className="imgStyle">
-    //     <img
-    //       className="poster"
-    //       src={"./images/" + Poster}
-    //       alt={Title}
-    //       width={300}
-    //       height={400}
-    //     />
-    //   </div>
-    //   <div className="divStyle">
-    //     <div>
-    //       <h2>Movie Name: {Title}</h2>
-    //     </div>
-    //     <div className="movieBox">
-    //       <p> Released: {Released}</p>
-    //     </div>
-    //     <div>
-    // <p>
-    //   Main Actors :{Actors[0]} ,{Actors[1]} ,{Actors[2]}
-    //   and {Actors[3]}
-    // </p>
-    //     </div>
-    //     <div>
-    //       <p>Movie Rating : {Rating}</p>
-    //     </div>
-    //   </div>
-    //   <div className="remove-btn">
-    //     <button
-    //       className="delete"
-    //       onClick={() => {
-    //         onRemove(Title);
-    //       }}
-    //     >
-    //       Remove
-    //     </button>
-    //   </div>
-    // </div>
   );
 }
 // create the movie form proto

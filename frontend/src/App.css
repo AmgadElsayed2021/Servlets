@@ -132,7 +132,8 @@
   height: 200px;
   padding: 10px;
   display: flex;
-  direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 .App-header {
   background-color: #282c34;
