@@ -132,14 +132,6 @@ function MovieForm() {
     e.preventDefault();
     JSON.stringify(formData);
     console.log(formData);
-
-    // newReview(
-    //   formData.Title,
-    //   formData.Actors.split(", "),
-    //   formData.Poster,
-    //   formData.Rating,
-    //   formData.Released
-    // );
   };
   return (
     <form action="">

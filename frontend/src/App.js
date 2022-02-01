@@ -23,20 +23,7 @@ function App() {
             <Home
               movies={movies}
               onRemoveMovie={(Title) => {
-                const deleteMovie = async () => {
-                  const movie = await fetch("/api/delete", {
-                    method: "post",
-                    body: JSON.stringify({ Title: Title }),
-                    headers: {
-                      "Content-Type": "application/json",
-                    },
-                  });
-                  const body = await movie.json();
-                  console.log(body);
-                  if (body.message !== "Unable to delete movie") {
-                    setMovies(body.movies);
-                  }
-                };
+                const deleteMovie = onRemoveFunction(Title, updateTheMovies);
                 deleteMovie();
               }}
             />
@@ -46,12 +33,8 @@ function App() {
           path="/ratings"
           element={
             <Ratings
-              newReview={(Title, Actors, Poster, Rating, Released) => {
-                const Review = [
-                  ...movies,
-                  { Title, Actors, Poster, Rating, Released },
-                ];
-                setMovies(Review);
+              newReview={(formData) => {
+                addMovieFunction(formData, updateTheMovies);
               }}
             />
           }
@@ -60,6 +43,39 @@ function App() {
       </Routes>
     </div>
   );
+
+  function updateTheMovies(body) {
+    if (body.message === "1") {
+      setMovies(body.movies);
+    }
+  }
 }
 
 export default App;
+function addMovieFunction(formData, updateTheMovies) {
+  const addMovie = async () => {
+    const result = await fetch("/api/addMovie", {
+      method: "post",
+      body: formData,
+    });
+    const body = await result.json();
+    console.log(body);
+    updateTheMovies();
+  };
+  addMovie();
+}
+
+function onRemoveFunction(Title, updateTheMovies) {
+  return async () => {
+    const movie = await fetch("/api/delete", {
+      method: "post",
+      body: JSON.stringify({ Title: Title }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const body = await movie.json();
+    console.log(body);
+    updateTheMovies(body);
+  };
+}

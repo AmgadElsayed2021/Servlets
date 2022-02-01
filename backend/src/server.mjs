@@ -47,7 +47,7 @@ app.get("/api/movies", async (req, res) => {
 });
 // const Amgad = 3;
 
-app.post("/api/addAMovie", async (req, res) => {
+app.post("/api/addMovie", async (req, res) => {
   try {
     const { db, client } = await DBConnection();
     await db.collection("movies").insertOne({
@@ -58,11 +58,9 @@ app.post("/api/addAMovie", async (req, res) => {
       Poster: req.body.Poster,
     });
 
-    res
-      .status(200)
-      .json({
-        message: `${req.body.Title} movie has been added to the DataBase`,
-      });
+    res.status(200).json({
+      message: `1`,
+    });
     client.close();
   } catch (error) {
     res.status(500).json({ message: "Error connecting to db", error });
@@ -82,7 +80,7 @@ app.post("/api/delete", async (req, res) => {
     if (delMovie.deletedCount > 0) {
       const movie = await db.collection("movies").find({}).toArray();
       res.status(200).json({
-        message: `${req.body.Title} movie has been deleted`,
+        message: `1`,
         movies: movie,
       });
     } else {
@@ -111,4 +109,15 @@ app.get("/api/Movie/:Title", async (req, res) => {
     res.status(500).json({ message: "Error connecting to db", error });
   }
 });
+// lets try this and hopefully it will work
+const storage = multer.diskStorage({
+  destination: "./src/build/images/",
+  filename: (req, file, cb) => {
+    const fileName = file.originalname.toLowerCase().split(" ").join("-");
+    cb(null, fileName);
+  },
+});
+
+const upload = multer({ storage: storage });
+
 app.listen(8000, () => console.log("App is listening on port 8000"));
