@@ -22,13 +22,22 @@ function App() {
           element={
             <Home
               movies={movies}
-              onRemoveMovie={(title) => {
-                // console.log(title);
-                const updatedMovies = movies.filter(
-                  (movie) => movie.Title !== title
-                );
-                setMovies(updatedMovies);
-                console.log(movies);
+              onRemoveMovie={(Title) => {
+                const deleteMovie = async () => {
+                  const movie = await fetch("/api/delete", {
+                    method: "post",
+                    body: JSON.stringify({ Title: Title }),
+                    headers: {
+                      "Content-Type": "application/json",
+                    },
+                  });
+                  const body = await movie.json();
+                  console.log(body);
+                  if (body.message !== "Unable to delete movie") {
+                    setMovies(body.movies);
+                  }
+                };
+                deleteMovie();
               }}
             />
           }
