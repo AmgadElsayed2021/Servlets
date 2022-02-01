@@ -1,5 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Button from "react-bootstrap/Button";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Image from "react-bootstrap/Image";
 // import { Form, Button } from "semantic-ui-react";
 // import jsonfile from "jsonfile";
 // import "./index.css";
@@ -32,7 +37,7 @@ export function Home({ movies = [], onRemoveMovie = (f) => f }) {
             Actors={movie.Actors}
             Poster={movie.Poster}
             Rating={movie.Rating}
-            Release={movie.Released}
+            Released={movie.Released}
             onRemove={onRemoveMovie}
           ></Movie>
         ))}
@@ -67,44 +72,98 @@ export default function Movie({
 }) {
   // console.log(props);
   return (
-    <div className="movie-frame">
-      <div className="imgStyle">
-        <img
-          className="poster"
-          src={"./images/" + Poster}
-          alt={Title}
-          width={300}
-          height={400}
-        />
-      </div>
-      <div className="divStyle">
-        <div>
-          <h2>Movie Name: {Title}</h2>
-        </div>
-        <div className="movieBox">
-          <p> Released: {Released}</p>
-        </div>
-        <div>
+    <Container>
+      <Row className=".text-center">
+        <h2> {Title}</h2>
+      </Row>
+
+      <Row style={{ width: "20rem", height: "30rem" }}>
+        <img className="poster" src={"./images/" + Poster} alt={Title} />
+      </Row>
+      <Row xl={"auto"} style={{ textAlign: "left" }}>
+        <Col>
           <p>
-            Main Actors :{Actors[0]} ,{Actors[1]} ,{Actors[2]}
-            and {Actors[3]}
+            <b>Released</b>:
           </p>
-        </div>
-        <div>
-          <p>Movie Rating : {Rating}</p>
-        </div>
-      </div>
-      <div className="remove-btn">
-        <button
-          className="delete"
-          onClick={() => {
-            onRemove(Title);
-          }}
-        >
-          Remove
-        </button>
-      </div>
-    </div>
+        </Col>
+        <Col>
+          <p>{Released}</p>
+        </Col>
+      </Row>
+      <Row xl={"auto"} style={{ textAlign: "left", height: "10rem" }}>
+        <Col xs="auto">
+          <p>Main Actors :</p>
+        </Col>
+        <Col className=".align-items-stretch">
+          <Row>
+            <p>{Actors[0]}</p>
+          </Row>
+          <Row>
+            <p>{Actors[1]}</p>
+          </Row>
+          <Row>
+            <p>{Actors[2]}</p>
+          </Row>
+          <Row>
+            <p>{Actors[3]}</p>
+          </Row>
+        </Col>
+      </Row>
+      <Row xl={"auto"} style={{ textAlign: "left" }}>
+        <Col>
+          <p>Movie Rating :</p>
+        </Col>
+        <Col>
+          <p>{Rating}</p>
+        </Col>
+      </Row>
+      <Button
+        className=".text-center"
+        onClick={() => {
+          onRemove(Title);
+        }}
+      >
+        Remove
+      </Button>
+    </Container>
+    // <div className="movie-frame">
+    //   <div className="imgStyle">
+    //     <img
+    //       className="poster"
+    //       src={"./images/" + Poster}
+    //       alt={Title}
+    //       width={300}
+    //       height={400}
+    //     />
+    //   </div>
+    //   <div className="divStyle">
+    //     <div>
+    //       <h2>Movie Name: {Title}</h2>
+    //     </div>
+    //     <div className="movieBox">
+    //       <p> Released: {Released}</p>
+    //     </div>
+    //     <div>
+    // <p>
+    //   Main Actors :{Actors[0]} ,{Actors[1]} ,{Actors[2]}
+    //   and {Actors[3]}
+    // </p>
+    //     </div>
+    //     <div>
+    //       <p>Movie Rating : {Rating}</p>
+    //     </div>
+    //   </div>
+    //   <div className="remove-btn">
+    //     <button
+    //       className="delete"
+    //       onClick={() => {
+    //         onRemove(Title);
+    //       }}
+    //     >
+    //       Remove
+    //     </button>
+    //   </div>
+    // </div>
   );
 }
 // create the movie form proto
